@@ -38,16 +38,17 @@ $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template
 // Add Stylesheets
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
 
+if ($this->countModules('position-7')) {
+    $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/pushmenu.js');
+    $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/pushmenu.css');
+}
+
 // Load optional RTL Bootstrap CSS
 JHtml::_('bootstrap.loadCss', false, $this->direction);
 
 // Adjusting content width
 if ($this->countModules('position-8')) {
     $span = "span6";
-} elseif (!$this->countModules('position-8')) {
-    $span = "span9";
-} elseif (!$this->countModules('position-8')) {
-    $span = "span9";
 } else {
     $span = "span12";
 }
@@ -61,6 +62,10 @@ if ($this->params->get('logoFile')) {
 } else {
     $logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 }
+
+$googleFont = str_replace(' + ', ' ', $this->params->get('
+		 googleFontName '));
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -77,10 +82,7 @@ if ($this->params->get('logoFile')) {
 	rel='stylesheet' type='text/css' />
 <style type="text/css">
 h1, h2, h3, h4, h5, h6, .site-title {
-	font-family: '<? php echo str_replace(' + ', ' ',$ this- > params- > get('
-		googleFontName '));
-    ?>',
-	sans-serif;
+	font-family: '<?php echo $googleFont; ?>', sans-serif;
 }
 </style>
 	<?php endif; ?>
@@ -89,26 +91,20 @@ h1, h2, h3, h4, h5, h6, .site-title {
 	<style type="text/css">
 body.site {
 	border-top: 3px solid<?php echo$this->params->get('templateColor'); ?>;
-	background-color: <?php
-    
-echo $this->params->get('templateBackgroundColor');
-    ?>
+	background-color: <?php echo$this->params->get('templateBackgroundColor');
+	?>
 }
 
 a {
-	color: <?php
-    
-echo $this->params->get('templateColor');
-    ?>;
+	color: <?php echo$this->params->get('templateColor');
+	?>;
 }
 
 .navbar-inner, .nav-list>.active>a, .nav-list>.active>a:hover,
 	.dropdown-menu li>a:hover, .dropdown-menu .active>a, .dropdown-menu .active>a:hover,
 	.nav-pills>.active>a, .nav-pills>.active>a:hover, .btn-primary {
-	background: <?php
-    
-echo $this->params->get('templateColor');
-    ?>;
+	background: <?php echo$this->params->get('templateColor');
+	?>;
 }
 
 .navbar-inner {
@@ -150,6 +146,18 @@ echo ($this->direction == 'rtl' ? ' rtl' : '');
 					</a>
 					<div class="header-search pull-right">
 						<jdoc:include type="modules" name="position-0" style="none" />
+
+						<?php
+
+    if ($this->countModules('position-7')) {
+
+        ?>
+        <button class="btn btn-primary" id="pushmenu-btn">login</button>
+
+        <?php
+    }
+    ?>
+
 					</div>
 				</div>
 			</header>
@@ -183,11 +191,16 @@ echo ($this->direction == 'rtl' ? ' rtl' : '');
 					type="modules" name="position-2" style="none" /> <!-- End Content -->
 				</main>
 				<?php if ($this->countModules('position-7')) : ?>
-				<div id="pushmenu" style="visibility: hidden; pointer-events: none;">
-					<div id="aside" class="span3">
-						<!-- Begin Right Sidebar -->
-						<jdoc:include type="modules" name="position-7" style="well" />
-						<!-- End Right Sidebar -->
+				<div id="pushmenu-parent"
+					style="visibility: hidden; pointer-events: none;">
+					<div id="pushmenu" class="row-fluid span3">
+
+						<div id="aside" class="span3">
+							<!-- Begin Right Sidebar -->
+							<jdoc:include type="modules" name="position-7" style="well" />
+							<!-- End Right Sidebar -->
+						</div>
+
 					</div>
 				</div>
 				<?php endif; ?>
