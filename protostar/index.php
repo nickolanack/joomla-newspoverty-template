@@ -164,7 +164,7 @@ echo ($this->direction == 'rtl' ? ' rtl' : '');
     if ($this->countModules('position-7')) {
 
         ?>
-        <button class="btn btn-primary" id="pushmenu-btn"><?php echo  (JFactory::getUser()->guest?'login':'logout'); ?></button>
+        <button class="btn btn-primary" id="pushmenu-btn"><?php echo  (JFactory::getUser()->guest?'login - add content':'logout'); ?></button>
 
         <?php
     }
