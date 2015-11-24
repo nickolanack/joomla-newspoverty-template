@@ -27,8 +27,8 @@
 }
 
 
-button.btn.btn-primary.btn {
-    background-color: #0088cc;
+button.btn.btn-primary, input.btn.btn-primary {
+    background-color: rgb(0,160,80);
     border-radius: 0;
     border: none;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
