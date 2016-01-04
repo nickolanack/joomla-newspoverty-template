@@ -205,9 +205,10 @@ echo ($this->direction == 'rtl' ? ' rtl' : '');
 				<?php if ($this->countModules('position-7')) : ?>
 				<div id="pushmenu-parent"
 					style="visibility: hidden; pointer-events: none;">
-					<div id="pushmenu" class="row-fluid span3">
+					<div id="pushmenu" class="row-fluid span3" style="width:350px; overflow:hidden;">
 
 						<div id="aside" class="span3">
+							<h3 id="pushmenu-message"></h3>
 							<!-- Begin Right Sidebar -->
 							<jdoc:include type="modules" name="position-7" style="well" />
 							<!-- End Right Sidebar -->

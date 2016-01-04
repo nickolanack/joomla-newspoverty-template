@@ -14,6 +14,8 @@
 #aside>.well {
 	margin: 0;
 	background-color: white;
+	box-shadow: none;
+	border:none;
 }
 
 .pushmenu #login-form {
@@ -33,4 +35,21 @@ button.btn.btn-primary, input.btn.btn-primary {
     border: none;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     padding: 10px 25px;
+}
+
+
+
+h3#pushmenu-message, .site-title {
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 100;
+    color: teal;
+}
+
+h3#pushmenu-message{
+ 	font-size: 20px;
+	margin:0;
+	padding:10px;
+	text-align: center;
+	font-size:;
 }
